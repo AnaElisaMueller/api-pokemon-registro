@@ -11,12 +11,36 @@ $retornoApi = file_get_contents($apiGet);
 
 file_put_contents($pokemonTxt, $retornoApi);
 
-}/*else{
+} else{
+    $retornoApi = file_get_contents($pokemonTxt);
+    file_put_contents($pokemonTxt, $retornoApi);
+} 
 
-} */
+/*//separar em 15 em cada pagina
+for ($i=0; $i <150;$i++){
+        $retornoApi[$i];
+    if( $i % 15 == 0){
+        $pagina = 0;
+}
 
+
+
+$item["results"];
+endforeach;
+}*/
+//transformar em json
+$res_json = json_decode($retornoApi);
 header('Content-Type: application/json');
-echo $retornoApi;
-
+foreach ($res_json->results as $ator) {
+    //var_dump($ator);
+    echo "Nome: " . $ator->name;
+    echo "\n";
+    echo "URL: " . $ator->url;
+echo "\n";
+echo "_______";
+echo "\n";
+}
+//echo $retornoApi;
+//var_dump ($res_json);
 
 ?>
